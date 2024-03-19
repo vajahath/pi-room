@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index 5b722350a01b08b6d715fe980067f30d91c4dc3c..bb1a5413e75ee8139fdff9fd77d598075a412eed 100755
+--- a/package.json
++++ b/package.json
+@@ -28,7 +28,6 @@
+   ],
+   "scripts": {
+     "test": "echo \"Error: no test specified\" && exit 1",
+-    "postinstall": "echo \"Enabling I2C at boot time, you may be asked for your password\" && sudo env \"PATH=$PATH\" script/enable_i2c.js",
+     "prebuild": "tslint 'src/**/*.ts'",
+     "build": "tsc"
+   },

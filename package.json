@@ -1,0 +1,17 @@
+{
+  "name": "pi-room",
+  "packageManager": "yarn@4.1.1",
+  "dependencies": {
+    "johnny-five": "^2.1.0",
+    "raspi-io": "^11.0.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "resolutions": {
+    "raspi-i2c@npm:^6.2.2": "patch:raspi-i2c@npm%3A6.2.4#~/.yarn/patches/raspi-i2c-npm-6.2.4-51f7bc8830.patch"
+  },
+  "devDependencies": {
+    "@types/johnny-five": "^2.1.9"
+  }
+}
