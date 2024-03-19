@@ -1,5 +1,5 @@
 import five from "johnny-five";
-import raspberryBoard from "raspi-io";
+import * as raspberryBoard from "raspi-io";
 
 const { Board, Led } = five;
 
