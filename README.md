@@ -6,6 +6,15 @@
 
 Related issue and work around: https://github.com/yarnpkg/berry/issues/6174
 
+### Need
+
+```
+root@raspberrypi:/home/pi/Desktop/projects/pi-room# node -v
+v18.19.1
+root@raspberrypi:/home/pi/Desktop/projects/pi-room# yarn -v
+4.1.1
+```
+
 ## Step 1
 
 On your Local Machine:
@@ -83,3 +92,20 @@ root@raspberrypi:/home/pi/Desktop/projects/pi-room# yarn start
 >> blinking
 
 ```
+index.js
+```
+var five = require("johnny-five");
+var Raspi = require("raspi-io").RaspiIO;
+var board = new five.Board({
+  io: new Raspi(),
+});
+
+board.on("ready", function () {
+  var led = new five.Led("P1-13");
+  led.blink(500);
+  console.log("blinking");
+});
+
+```
+
+Check https://www.npmjs.com/package/raspi-io#pin-naming
