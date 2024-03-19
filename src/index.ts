@@ -1,11 +1,13 @@
 import five from "johnny-five";
 import raspberryBoard from "raspi-io";
 
-const { RaspiIO } = raspberryBoard;
 const { Board, Led } = five;
 
+console.log("raspberryBoard", raspberryBoard);
+console.log("five", five);
+
 const board = new Board({
-  io: new RaspiIO(),
+  io: raspberryBoard.RaspiIO()
 });
 
 board.on("ready", function () {

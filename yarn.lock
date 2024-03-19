@@ -1202,7 +1202,7 @@ __metadata:
   dependencies:
     "@types/johnny-five": "npm:^2.1.9"
     johnny-five: "npm:^2.1.0"
-    raspi-io: "npm:^11.0.0"
+    raspi-io: "patch:raspi-io@npm%3A11.0.0#~/.yarn/patches/raspi-io-npm-11.0.0-b0270f74a8.patch"
     typescript: "npm:^5.4.2"
   languageName: unknown
   linkType: soft
@@ -1327,7 +1327,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"raspi-io@npm:^11.0.0":
+"raspi-io@npm:11.0.0":
   version: 11.0.0
   resolution: "raspi-io@npm:11.0.0"
   dependencies:
@@ -1342,6 +1342,25 @@ __metadata:
     raspi-serial: "npm:^6.0.0"
     raspi-soft-pwm: "npm:^6.0.1"
   checksum: 10c0/484da5020bbd36ef63b4756b94b37aa47dedddbf92f83cbed38d20383657aa9d2c2b6e409e65113253ea70eea04c12dead55c18bb4d886aa617ff643e5193eb9
+  conditions: (cpu=arm | cpu=arm64)
+  languageName: node
+  linkType: hard
+
+"raspi-io@patch:raspi-io@npm%3A11.0.0#~/.yarn/patches/raspi-io-npm-11.0.0-b0270f74a8.patch":
+  version: 11.0.0
+  resolution: "raspi-io@patch:raspi-io@npm%3A11.0.0#~/.yarn/patches/raspi-io-npm-11.0.0-b0270f74a8.patch::version=11.0.0&hash=a220e2"
+  dependencies:
+    clone: "npm:^2.1.2"
+    j5-io: "npm:^3.1.0"
+    j5-io-types: "npm:^2.4.0"
+    raspi: "npm:^6.0.1"
+    raspi-board: "npm:^7.1.2"
+    raspi-gpio: "npm:^6.2.1"
+    raspi-i2c: "npm:^6.2.2"
+    raspi-led: "npm:^2.1.1"
+    raspi-serial: "npm:^6.0.0"
+    raspi-soft-pwm: "npm:^6.0.1"
+  checksum: 10c0/bca544047f7ece82d1831480d476f4f53213d456ad64360d32a9ee1b4d3c0b6efe588fb59efa5df2b8f60f68a3ba3bfb24e001155a7888946a0e2e2f5c9b9b70
   conditions: (cpu=arm | cpu=arm64)
   languageName: node
   linkType: hard

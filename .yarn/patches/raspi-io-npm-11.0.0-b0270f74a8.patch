@@ -1,0 +1,40 @@
+diff --git a/declarations/index.d.ts b/declarations/index.d.ts
+deleted file mode 100644
+index 2f367a65fc51f1ac47228e826378c9943c6a6c39..0000000000000000000000000000000000000000
+--- a/declarations/index.d.ts
++++ /dev/null
+@@ -1,8 +0,0 @@
+-import { J5IO } from 'j5-io';
+-export interface IOptions {
+-    includePins?: Array<number | string>;
+-    excludePins?: Array<number | string>;
+-    enableSerial?: boolean;
+-    enableI2C?: boolean;
+-}
+-export declare function RaspiIO({ includePins, excludePins, enableSerial, enableI2C }?: IOptions): J5IO;
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..2f367a65fc51f1ac47228e826378c9943c6a6c39
+--- /dev/null
++++ b/dist/index.d.ts
+@@ -0,0 +1,8 @@
++import { J5IO } from 'j5-io';
++export interface IOptions {
++    includePins?: Array<number | string>;
++    excludePins?: Array<number | string>;
++    enableSerial?: boolean;
++    enableI2C?: boolean;
++}
++export declare function RaspiIO({ includePins, excludePins, enableSerial, enableI2C }?: IOptions): J5IO;
+diff --git a/package.json b/package.json
+index 3b648345707c2927908f70836214ce89b2a5c1cd..7e7b68b976b0d998c2b0eb94d70882fa6c257d20 100644
+--- a/package.json
++++ b/package.json
+@@ -3,6 +3,7 @@
+   "version": "11.0.0",
+   "description": "A Firmata-compatible Raspberry Pi I/O API",
+   "main": "dist/index.js",
++  "typings": "dist/index.d.ts",
+   "repository": {
+     "type": "git",
+     "url": "https://github.com/nebrius/raspi-io.git"
