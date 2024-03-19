@@ -29,14 +29,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const johnny_five_1 = __importDefault(require("johnny-five"));
 const raspberryBoard = __importStar(require("raspi-io"));
 const { Board, Led } = johnny_five_1.default;
-console.log("raspberryBoard", raspberryBoard);
-console.log("five", johnny_five_1.default);
 const board = new Board({
     io: raspberryBoard.RaspiIO()
 });
-board.on("ready", function () {
+board.on("ready", async function () {
     const led = new Led("P1-13");
-    led.blink(500);
-    console.log("blinking");
+    console.log("fading");
+    led.fadeIn(5000);
+    led.fadeOut(2000);
+    console.log("fading done");
 });
 //# sourceMappingURL=index.js.map

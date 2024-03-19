@@ -3,15 +3,17 @@ import * as raspberryBoard from "raspi-io";
 
 const { Board, Led } = five;
 
-console.log("raspberryBoard", raspberryBoard);
-console.log("five", five);
-
 const board = new Board({
   io: raspberryBoard.RaspiIO()
 });
 
-board.on("ready", function () {
+board.on("ready", async function () {
   const led = new Led("P1-13");
-  led.blink(500);
-  console.log("blinking");
+  console.log("fading");
+
+  led.fadeIn(5000);
+  led.fadeOut(2000);
+
+  console.log("fading done");
+
 });
