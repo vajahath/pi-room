@@ -6,12 +6,14 @@
     "raspi-io": "^11.0.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node dist/index.js",
+    "build": "tsc"
   },
   "resolutions": {
     "raspi-i2c@npm:^6.2.2": "patch:raspi-i2c@npm%3A6.2.4#~/.yarn/patches/raspi-i2c-npm-6.2.4-51f7bc8830.patch"
   },
   "devDependencies": {
-    "@types/johnny-five": "^2.1.9"
+    "@types/johnny-five": "^2.1.9",
+    "typescript": "^5.4.2"
   }
 }
