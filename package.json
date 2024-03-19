@@ -15,6 +15,7 @@
   "resolutions": {
     "raspi-i2c@npm:^6.2.2": "patch:raspi-i2c@npm%3A6.2.4#~/.yarn/patches/raspi-i2c-npm-6.2.4-51f7bc8830.patch"
   },
+  "main": "dist/index.js",
   "devDependencies": {
     "@types/johnny-five": "^2.1.9",
     "typescript": "^5.4.2"
