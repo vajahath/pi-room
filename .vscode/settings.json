@@ -3,5 +3,7 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
