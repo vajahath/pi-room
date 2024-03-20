@@ -10,5 +10,5 @@ board.on("ready", () => {
   console.log("ready");
 
   new five.Led("P1-13").blink();
-  console.log(five.Button("GPIO17"));
+  console.log(new five.Button("GPIO17"));
 });
