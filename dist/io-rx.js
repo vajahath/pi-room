@@ -26,25 +26,47 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.boardReady = exports.getRaspberryPiBoard = void 0;
+exports.Button = exports.RaspberryBoard = void 0;
 const johnny_five_1 = __importDefault(require("johnny-five"));
 const raspberryBoard = __importStar(require("raspi-io"));
 const rxjs_1 = require("rxjs");
-const { Board } = johnny_five_1.default;
-function getRaspberryPiBoard() {
-    if (getRaspberryPiBoard.prototype._board)
-        getRaspberryPiBoard.prototype._board;
-    getRaspberryPiBoard.prototype._board = new Board({
-        io: raspberryBoard.RaspiIO(),
-    });
-    return getRaspberryPiBoard.prototype._board;
+class Board extends johnny_five_1.default.Board {
+    constructor() {
+        super(...arguments);
+        this._onReady = (0, rxjs_1.fromEventPattern)((handler) => this.on("ready", handler)).pipe((0, rxjs_1.shareReplay)(1));
+    }
+    onReady() {
+        return this._onReady;
+    }
 }
-exports.getRaspberryPiBoard = getRaspberryPiBoard;
-function boardReady(board) {
-    if (boardReady.prototype._boardReady)
-        return boardReady.prototype._boardReady;
-    boardReady.prototype._boardReady = (0, rxjs_1.fromEventPattern)((handler) => board.on("ready", handler)).pipe((0, rxjs_1.shareReplay)(1), (0, rxjs_1.map)(() => board));
-    return boardReady.prototype._boardReady;
+class RaspberryBoard extends Board {
+    constructor(boardOptions) {
+        super({
+            io: raspberryBoard.RaspiIO(),
+            ...(boardOptions || {}),
+        });
+    }
 }
-exports.boardReady = boardReady;
+exports.RaspberryBoard = RaspberryBoard;
+class Button extends johnny_five_1.default.Button {
+    constructor() {
+        super(...arguments);
+        this._onClick = this.onKeepPressed().pipe((0, rxjs_1.filter)((ms) => ms >= 5 && ms <= 200));
+        this._onKeyDown = (0, rxjs_1.fromEventPattern)((handler) => this.on("down", handler)).pipe((0, rxjs_1.share)());
+        this._onKeepPressed = (0, rxjs_1.fromEventPattern)((handler) => this.on("hold", handler)).pipe((0, rxjs_1.share)());
+    }
+    onClick() {
+        return this._onClick;
+    }
+    onKeyUp() {
+        return this._onClick;
+    }
+    onKeyDown() {
+        return this._onKeyDown;
+    }
+    onKeepPressed() {
+        return this._onKeepPressed;
+    }
+}
+exports.Button = Button;
 //# sourceMappingURL=io-rx.js.map

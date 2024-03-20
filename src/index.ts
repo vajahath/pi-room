@@ -1,15 +1,17 @@
-import { boardReady, getRaspberryPiBoard } from "./io-rx";
+import { RaspberryBoard } from "./io-rx";
 import { forkJoin, switchMap } from "rxjs";
-import { ledBlink } from "./flows";
+import { buttonBasedLedBlink, ledBlink } from "./flows";
 
-const board = getRaspberryPiBoard();
+const board = new RaspberryBoard();
 
-boardReady(board)
+board
+  .onReady()
   .pipe(
     switchMap(() =>
       forkJoin({
+        // register flows here
         ledP113Blink: ledBlink("P1-13", 300),
-        ledP115Blink: ledBlink("P1-15", 2000),
+        buttonBasedLedBlink: buttonBasedLedBlink("P1-17", "P1-15"),
       })
     )
   )

@@ -1,30 +1,53 @@
 import five from "johnny-five";
 import * as raspberryBoard from "raspi-io";
 
-import { Observable, fromEventPattern, map, shareReplay } from "rxjs";
+import { filter, fromEventPattern, share, shareReplay } from "rxjs";
 
-const { Board } = five;
+abstract class Board extends five.Board {
+  private readonly _onReady = fromEventPattern((handler) =>
+    this.on("ready", handler)
+  ).pipe(shareReplay(1));
 
-export function getRaspberryPiBoard(): five.Board {
-  if (getRaspberryPiBoard.prototype._board)
-    getRaspberryPiBoard.prototype._board;
-
-  getRaspberryPiBoard.prototype._board = new Board({
-    io: raspberryBoard.RaspiIO(),
-  });
-
-  return getRaspberryPiBoard.prototype._board;
+  public onReady() {
+    return this._onReady;
+  }
 }
 
-export function boardReady(board: five.Board) {
-  if (boardReady.prototype._boardReady)
-    return boardReady.prototype._boardReady as Observable<five.Board>;
+export class RaspberryBoard extends Board {
+  constructor(boardOptions?: five.BoardOption) {
+    super({
+      io: raspberryBoard.RaspiIO(),
+      ...(boardOptions || {}),
+    });
+  }
+}
 
-  boardReady.prototype._boardReady = fromEventPattern((handler) =>
-    board.on("ready", handler)
-  ).pipe(
-    shareReplay(1),
-    map(() => board)
+export class Button extends five.Button {
+  private readonly _onClick = this.onKeepPressed().pipe(
+    filter((ms) => ms >= 5 && ms <= 200)
   );
-  return boardReady.prototype._boardReady as Observable<five.Board>;
+
+  private readonly _onKeyDown = fromEventPattern((handler) =>
+    this.on("down", handler)
+  ).pipe(share());
+
+  private readonly _onKeepPressed = fromEventPattern<number>(
+    (handler: (holdTime: number) => void) => this.on("hold", handler)
+  ).pipe(share());
+
+  public onClick() {
+    return this._onClick;
+  }
+
+  public onKeyUp() {
+    return this._onClick;
+  }
+
+  public onKeyDown() {
+    return this._onKeyDown;
+  }
+
+  public onKeepPressed() {
+    return this._onKeepPressed;
+  }
 }
