@@ -13,8 +13,9 @@ async function ledBlink(board, pin, ms) {
 }
 exports.ledBlink = ledBlink;
 async function buttonBasedLedBlink(board, buttonPin, ledPin) {
+    console.log("board", board);
     const button = new johnny_five_1.default.Button({ pin: buttonPin, board });
-    console.log(button);
+    console.log("button", button);
     // button
     //   .onKeepPressed()
     //   .pipe(

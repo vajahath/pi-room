@@ -10,7 +10,7 @@ board
     switchMap((board) =>
       forkJoin({
         // register flows here
-        ledP113Blink: ledBlink(board, "P1-13", 300),
+        // ledP113Blink: ledBlink(board, "P1-13", 300),
         buttonBasedLedBlink: buttonBasedLedBlink(board, "P1-11", "P1-15"),
       })
     )

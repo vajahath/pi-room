@@ -17,9 +17,10 @@ export async function buttonBasedLedBlink(
   buttonPin: string,
   ledPin: string
 ) {
+  console.log("board", board);
   const button = new five.Button({ pin: buttonPin, board });
 
-  console.log(button);
+  console.log("button", button);
   // button
   //   .onKeepPressed()
   //   .pipe(

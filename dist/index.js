@@ -8,7 +8,7 @@ board
     .onReady()
     .pipe((0, rxjs_1.switchMap)((board) => (0, rxjs_1.forkJoin)({
     // register flows here
-    ledP113Blink: (0, flows_1.ledBlink)(board, "P1-13", 300),
+    // ledP113Blink: ledBlink(board, "P1-13", 300),
     buttonBasedLedBlink: (0, flows_1.buttonBasedLedBlink)(board, "P1-11", "P1-15"),
 })))
     .subscribe((registeredFlows) => Object.keys(registeredFlows).forEach((flow) => console.log(`${flow} registered`)));
