@@ -1,26 +1,18 @@
-import five from "johnny-five";
-import * as raspberryBoard from "raspi-io";
+import { boardReady, getRaspberryPiBoard } from "./io-rx";
+import { forkJoin, switchMap } from "rxjs";
+import { ledBlink } from "./flows";
 
-import { fromEventPattern, map, shareReplay } from "rxjs";
+const board = getRaspberryPiBoard();
 
-const { Board, Led } = five;
-
-const board = new Board({
-  io: raspberryBoard.RaspiIO(),
+const flows = forkJoin({
+  ledP113Blink: ledBlink("P1-13", 300),
+  ledP115Blink: ledBlink("P1-15", 2000),
 });
 
-const boardReady = fromEventPattern((handler) =>
-  board.on("ready", handler)
-).pipe(
-  shareReplay(1),
-  map(() => board)
-);
-
-boardReady.subscribe(() => {
-  const led = new Led("P1-13");
-  console.log("fading");
-
-  led.fadeIn(5000);
-
-  console.log("fading done");
-});
+boardReady(board)
+  .pipe(switchMap(() => flows))
+  .subscribe((registeredFlows) =>
+    Object.keys(registeredFlows).forEach((flow) =>
+      console.log(`${flow} registered`)
+    )
+  );

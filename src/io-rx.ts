@@ -3,16 +3,20 @@ import * as raspberryBoard from "raspi-io";
 
 import { Observable, fromEventPattern, map, shareReplay } from "rxjs";
 
-const { Board, Led } = five;
+const { Board } = five;
 
-function getRaspberryPiBoard() {
-  const board = new Board({
+export function getRaspberryPiBoard(): five.Board {
+  if (getRaspberryPiBoard.prototype._board)
+    getRaspberryPiBoard.prototype._board;
+
+  getRaspberryPiBoard.prototype._board = new Board({
     io: raspberryBoard.RaspiIO(),
   });
-  return board;
+
+  return getRaspberryPiBoard.prototype._board;
 }
 
-function boardReady(board: five.Board) {
+export function boardReady(board: five.Board) {
   if (boardReady.prototype._boardReady)
     return boardReady.prototype._boardReady as Observable<five.Board>;
 
@@ -24,11 +28,3 @@ function boardReady(board: five.Board) {
   );
   return boardReady.prototype._boardReady as Observable<five.Board>;
 }
-
-boardReady(getRaspberryPiBoard()).subscribe(() => {
-  const led = new Led("P1-13");
-
-  led.blink(200);
-
-  console.log("blinking");
-});
