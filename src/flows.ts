@@ -1,19 +1,23 @@
 import five from "johnny-five";
-import { Button } from "./io-rx";
+import { Button, RaspberryBoard } from "./io-rx";
 import { filter, map, of, scan, switchMap } from "rxjs";
 
 const { Led } = five;
 
-export async function ledBlink(pin: string, ms: number) {
-  const led = new Led(pin);
+export async function ledBlink(board: RaspberryBoard, pin: string, ms: number) {
+  const led = new Led({ pin, board });
 
   led.blink(ms);
 
   console.log(`blinking: ${pin} (${ms}ms)`);
 }
 
-export async function buttonBasedLedBlink(buttonPin: string, ledPin: string) {
-  const button = new Button(buttonPin);
+export async function buttonBasedLedBlink(
+  board: RaspberryBoard,
+  buttonPin: string,
+  ledPin: string
+) {
+  const button = new five.Button({ pin: buttonPin, board });
 
   console.log(button);
   // button

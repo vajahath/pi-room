@@ -33,7 +33,7 @@ const rxjs_1 = require("rxjs");
 class Board extends johnny_five_1.default.Board {
     constructor() {
         super(...arguments);
-        this._onReady = (0, rxjs_1.fromEventPattern)((handler) => this.on("ready", handler)).pipe((0, rxjs_1.shareReplay)(1));
+        this._onReady = (0, rxjs_1.fromEventPattern)((handler) => this.on("ready", () => handler(this))).pipe((0, rxjs_1.shareReplay)(1));
     }
     onReady() {
         return this._onReady;

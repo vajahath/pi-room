@@ -7,11 +7,11 @@ const board = new RaspberryBoard();
 board
   .onReady()
   .pipe(
-    switchMap(() =>
+    switchMap((board) =>
       forkJoin({
         // register flows here
-        ledP113Blink: ledBlink("P1-13", 300),
-        buttonBasedLedBlink: buttonBasedLedBlink("P1-11", "P1-15"),
+        ledP113Blink: ledBlink(board, "P1-13", 300),
+        buttonBasedLedBlink: buttonBasedLedBlink(board, "P1-11", "P1-15"),
       })
     )
   )

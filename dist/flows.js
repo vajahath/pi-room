@@ -5,16 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.buttonBasedLedBlink = exports.ledBlink = void 0;
 const johnny_five_1 = __importDefault(require("johnny-five"));
-const io_rx_1 = require("./io-rx");
 const { Led } = johnny_five_1.default;
-async function ledBlink(pin, ms) {
-    const led = new Led(pin);
+async function ledBlink(board, pin, ms) {
+    const led = new Led({ pin, board });
     led.blink(ms);
     console.log(`blinking: ${pin} (${ms}ms)`);
 }
 exports.ledBlink = ledBlink;
-async function buttonBasedLedBlink(buttonPin, ledPin) {
-    const button = new io_rx_1.Button(buttonPin);
+async function buttonBasedLedBlink(board, buttonPin, ledPin) {
+    const button = new johnny_five_1.default.Button({ pin: buttonPin, board });
     console.log(button);
     // button
     //   .onKeepPressed()

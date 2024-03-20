@@ -4,8 +4,8 @@ import * as raspberryBoard from "raspi-io";
 import { filter, fromEventPattern, share, shareReplay } from "rxjs";
 
 abstract class Board extends five.Board {
-  private readonly _onReady = fromEventPattern((handler) =>
-    this.on("ready", handler)
+  private readonly _onReady = fromEventPattern<Board>((handler) =>
+    this.on("ready", () => handler(this))
   ).pipe(shareReplay(1));
 
   public onReady() {
