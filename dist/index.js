@@ -9,7 +9,7 @@ board
     .pipe((0, rxjs_1.switchMap)(() => (0, rxjs_1.forkJoin)({
     // register flows here
     ledP113Blink: (0, flows_1.ledBlink)("P1-13", 300),
-    buttonBasedLedBlink: (0, flows_1.buttonBasedLedBlink)("P1-17", "P1-15"),
+    buttonBasedLedBlink: (0, flows_1.buttonBasedLedBlink)("P1-11", "P1-15"),
 })))
     .subscribe((registeredFlows) => Object.keys(registeredFlows).forEach((flow) => console.log(`${flow} registered`)));
 //# sourceMappingURL=index.js.map
