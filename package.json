@@ -1,9 +1,8 @@
 {
   "name": "pi-room",
-  "packageManager": "yarn@4.1.1",
   "dependencies": {
     "johnny-five": "^2.1.0",
-    "raspi-io": "patch:raspi-io@npm%3A11.0.0#~/.yarn/patches/raspi-io-npm-11.0.0-b0270f74a8.patch",
+    "raspi-io": "^11.0.0",
     "rxjs": "^7.8.1"
   },
   "scripts": {
@@ -11,18 +10,11 @@
     "build": "tsc"
   },
   "engines": {
-    "node": ">=18"
-  },
-  "resolutions": {
-    "raspi-i2c@npm:^6.2.2": "patch:raspi-i2c@npm%3A6.2.4#~/.yarn/patches/raspi-i2c-npm-6.2.4-51f7bc8830.patch"
+    "node": ">=16"
   },
   "main": "dist/index.js",
   "devDependencies": {
-    "@types/eslint": "^8",
     "@types/johnny-five": "^2.1.9",
-    "@typescript-eslint/eslint-plugin": "^7.3.1",
-    "@typescript-eslint/parser": "^7.3.1",
-    "eslint": "^8.57.0",
     "typescript": "^5.4.2"
   }
 }
