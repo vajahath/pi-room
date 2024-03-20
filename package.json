@@ -3,7 +3,8 @@
   "packageManager": "yarn@4.1.1",
   "dependencies": {
     "johnny-five": "^2.1.0",
-    "raspi-io": "patch:raspi-io@npm%3A11.0.0#~/.yarn/patches/raspi-io-npm-11.0.0-b0270f74a8.patch"
+    "raspi-io": "patch:raspi-io@npm%3A11.0.0#~/.yarn/patches/raspi-io-npm-11.0.0-b0270f74a8.patch",
+    "rxjs": "^7.8.1"
   },
   "scripts": {
     "start": "node dist/index.js",

@@ -1203,6 +1203,7 @@ __metadata:
     "@types/johnny-five": "npm:^2.1.9"
     johnny-five: "npm:^2.1.0"
     raspi-io: "patch:raspi-io@npm%3A11.0.0#~/.yarn/patches/raspi-io-npm-11.0.0-b0270f74a8.patch"
+    rxjs: "npm:^7.8.1"
     typescript: "npm:^5.4.2"
   languageName: unknown
   linkType: soft
@@ -1467,6 +1468,15 @@ __metadata:
   version: 0.12.0
   resolution: "retry@npm:0.12.0"
   checksum: 10c0/59933e8501727ba13ad73ef4a04d5280b3717fd650408460c987392efe9d7be2040778ed8ebe933c5cbd63da3dcc37919c141ef8af0a54a6e4fca5a2af177bfe
+  languageName: node
+  linkType: hard
+
+"rxjs@npm:^7.8.1":
+  version: 7.8.1
+  resolution: "rxjs@npm:7.8.1"
+  dependencies:
+    tslib: "npm:^2.1.0"
+  checksum: 10c0/3c49c1ecd66170b175c9cacf5cef67f8914dcbc7cd0162855538d365c83fea631167cacb644b3ce533b2ea0e9a4d0b12175186985f89d75abe73dbd8f7f06f68
   languageName: node
   linkType: hard
 
@@ -1765,6 +1775,13 @@ __metadata:
   version: 0.7.1
   resolution: "temporal@npm:0.7.1"
   checksum: 10c0/f415d62c9c5d041c15a806a3d76da686aceb6b896234950bb06bf79555feb09a991c6920fa6fcbbc288e899769bed907681ff87d3f00554363820f04a722e3a4
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.1.0":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 10c0/e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
   languageName: node
   linkType: hard
 

@@ -28,15 +28,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const johnny_five_1 = __importDefault(require("johnny-five"));
 const raspberryBoard = __importStar(require("raspi-io"));
+const rxjs_1 = require("rxjs");
 const { Board, Led } = johnny_five_1.default;
 const board = new Board({
-    io: raspberryBoard.RaspiIO()
+    io: raspberryBoard.RaspiIO(),
 });
-board.on("ready", async function () {
+const boardReady = (0, rxjs_1.fromEventPattern)((handler) => board.on("ready", handler)).pipe((0, rxjs_1.shareReplay)(1), (0, rxjs_1.map)(() => board));
+boardReady.subscribe(() => {
     const led = new Led("P1-13");
     console.log("fading");
     led.fadeIn(5000);
-    led.fadeOut(2000);
     console.log("fading done");
 });
 //# sourceMappingURL=index.js.map
