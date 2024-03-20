@@ -11,7 +11,7 @@ board
       forkJoin({
         // register flows here
         ledP113Blink: ledBlink("P1-13", 300),
-        buttonBasedLedBlink: buttonBasedLedBlink("P1-17", "P1-15"),
+        buttonBasedLedBlink: buttonBasedLedBlink("P1-11", "P1-15"),
       })
     )
   )
